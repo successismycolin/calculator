@@ -1,36 +1,60 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 #container {
     border: 2px, solid, black;
     width: 15rem;
     padding: 2rem;
+    border-radius: 10px;
+    background-color: rgb(212, 190, 157);
 }
 
-#inputbox {
+#display {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 2px, solid, black;
+}
+
+#inputbox {
+    /* border: 2px, solid, black; */
     padding: 1rem;
+    border-radius: 10px;
+    width: 12rem;
 }
 
 #buttons {
-    border: 1px, solid, black;
+    /* border: 1px, solid, black; */
     height: 200px;
     padding: 1rem;
     display: grid;
+    grid-template-areas: 
+    "box-1 box-2 box-3 box-11"
+    "box-4 box-5 box-6 box-12"
+    "box-7 box-8 box-9 box-13"
+    "box-10 box-15 box-15 box-14";
 }
 
 button {
-
+    border-radius: 20px;
+    margin: 1px;
 }
 
-.number {}
+button:hover {
+    cursor: pointer;
+}
 
-.operator {}
+.number {
+    background-color: rgb(255, 247, 240);
+}
+
+.operator {
+    background-color: antiquewhite;
+}
 
 .equals {
-    
+    background-color: rgb(248, 184, 100);
 }
