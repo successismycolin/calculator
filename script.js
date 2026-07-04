@@ -69,19 +69,22 @@ function displayResult(operation) {
         operator = operators[char];
         if (operation.includes(operator)) {
             components = operation.split(operator);
+            // Immediately exit loop after getting components
+            break;
         }
     }
 
     num1 = Number(components[0]);
     num2 = Number(components[1]);
 
-    if (operation.includes("+")) {
+    // Trade off O(n) search operation (.includes()) for O(1) comparison operation (==)
+    if ("+" == operator) {
         result = add(num1, num2); 
-    } else if (operation.includes("-")) {
+    } else if ("-" == operator) {
         result = subtract(num1, num2);
-    } else if (operation.includes("*")) {
+    } else if ("*" == operator) {
         result = multiply(num1, num2);
-    } else if (operation.includes("/")) {
+    } else if ("/" == operator) {
         result = divide(num1, num2);
     }
 
