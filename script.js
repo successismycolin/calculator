@@ -58,7 +58,13 @@ function multiply(x, y) {
     return x * y;
 }
 // 8. Operation execution
-function displayResult(operation) {
+function displayResult() {
+    if (inputbox.innerHTML == "") {
+        return;
+    }
+
+    const operation = inputbox.innerHTML;
+
     let result;
     let operator;
     let components;
@@ -92,7 +98,7 @@ function displayResult(operation) {
 }
 
 btnEquals.addEventListener("click", (event) => {
-    displayResult("9+7");
+    displayResult();
 });
 
 // To prevent keyboard input
