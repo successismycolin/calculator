@@ -84,4 +84,9 @@ function displayResult(operation) {
 
 btnEquals.addEventListener("click", displayResult("5+5"))
 
+// To prevent keyboard inputs
+inputbox.addEventListener('keydown', (event) => {
+    event.preventDefault(); 
+});
+
 // 9. Continuous operations
