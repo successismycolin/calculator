@@ -66,28 +66,25 @@ function displayResult(operation) {
     for (char in operators) {
         operator = operators[char];
         if (operation.includes(operator)) {
-            console.log(operator);
             components = operation.split(operator);
         }
     }
 
-    if ("+" == operator) {
-        result = add(Number(components[0]), Number(components[2])) 
-    } else if ("-" == operator) {
-        result = subtract(Number(components[0]), Number(components[2]))
-    } else if ("*" == operator) {
-        result = multiply(Number(components[0]), Number(components[2]))
-    } else if ("/" == operator) {
-        result = divide(Number(components[0]), Number(components[2]))
+    if (operation.includes("+")) {
+        result = add(Number(components[0]), Number(components[1])) 
+    } else if (operation.includes("-")) {
+        result = subtract(Number(components[0]), Number(components[1]))
+    } else if (operation.includes("*")) {
+        result = multiply(Number(components[0]), Number(components[1]))
+    } else if (operation.includes("/")) {
+        result = divide(Number(components[0]), Number(components[1]))
     }
-
-    console.log(components[0]);
 
     inputbox.innerHTML = result;
 }
 
 btnEquals.addEventListener("click", (event) => {
-    displayResult("5+5");
+    displayResult("9+7");
 });
 
 // To prevent keyboard input
