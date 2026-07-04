@@ -61,11 +61,13 @@ function multiply(x, y) {
 function displayResult(operation) {
     let result;
     let operator;
+    let components;
 
     for (char in operators) {
-        if (operation.includes(char)) {
-            operator = char;
-            let components = operation.split(char);
+        operator = operators[char];
+        if (operation.includes(operator)) {
+            console.log(operator);
+            components = operation.split(char);
         }
     }
 
@@ -79,12 +81,16 @@ function displayResult(operation) {
         result = divide(Number(components[0]), Number(components[2]))
     }
 
-    inputbox.value = result;
+    console.log(components);
+
+    inputbox.innerHTML = result;
 }
 
-btnEquals.addEventListener("click", displayResult("5+5"))
+btnEquals.addEventListener("click", (event) => {
+    displayResult("5+5");
+});
 
-// To prevent keyboard inputs
+// To prevent keyboard input
 inputbox.addEventListener('keydown', (event) => {
     event.preventDefault(); 
 });
