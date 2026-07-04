@@ -62,6 +62,8 @@ function displayResult(operation) {
     let result;
     let operator;
     let components;
+    let num1;
+    let num2;
 
     for (char in operators) {
         operator = operators[char];
@@ -70,14 +72,17 @@ function displayResult(operation) {
         }
     }
 
+    num1 = Number(components[0]);
+    num2 = Number(components[1]);
+
     if (operation.includes("+")) {
-        result = add(Number(components[0]), Number(components[1])) 
+        result = add(num1, num2); 
     } else if (operation.includes("-")) {
-        result = subtract(Number(components[0]), Number(components[1]))
+        result = subtract(num1, num2);
     } else if (operation.includes("*")) {
-        result = multiply(Number(components[0]), Number(components[1]))
+        result = multiply(num1, num2);
     } else if (operation.includes("/")) {
-        result = divide(Number(components[0]), Number(components[1]))
+        result = divide(num1, num2);
     }
 
     inputbox.innerHTML = result;
