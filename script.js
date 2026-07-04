@@ -17,29 +17,30 @@ const btnMultiply = document.getElementById("x");
 const btnEquals = document.getElementById("=");
 
 const operators = ["+", "-", "*", "/"]
-let characterChain = inputbox.textContent;
 
 // 2. Input validation
     // If current character is an operator and the next character chosen is also an operator then the most recent
     // operator will replace the old one in the display field.
 function validateInput(char1, char2) {
-    if (char1 in operators) {
-        if (typeof(char2) == "number") {
-            return true;
-        } else if (char2 in operators) {
+    // Input can be either a number or an operator
+    if (operators.includes(char1)) {
+        // Cannot input two consecutive operators
+        if (operators.includes(char2)) {
             return false;
+        } else {
+            return true;
         }
     }
-    if (char1 == "" && char2 in operators) {
+    if (char1 == undefined && operators.includes(char2)) {
         return false;
     }
     return true;
 }
 // 3. Add character to display field
 function addCharacter(char) {
-    if (validateInput(inputbox.textContent[-1], char)) {
+    if (validateInput(inputbox.innerHTML.split("").at(-1), char) === true) {
         inputbox.textContent += char;
-    }
+    } 
 } 
 // 4. Addition
 function add(x, y) {
@@ -96,10 +97,6 @@ function displayResult() {
 
     inputbox.innerHTML = result;
 }
-
-btnEquals.addEventListener("click", (event) => {
-    displayResult();
-});
 
 // To prevent keyboard input
 inputbox.addEventListener('keydown', (event) => {
