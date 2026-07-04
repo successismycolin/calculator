@@ -67,7 +67,7 @@ function displayResult(operation) {
         operator = operators[char];
         if (operation.includes(operator)) {
             console.log(operator);
-            components = operation.split(char);
+            components = operation.split(operator);
         }
     }
 
@@ -81,7 +81,7 @@ function displayResult(operation) {
         result = divide(Number(components[0]), Number(components[2]))
     }
 
-    console.log(components);
+    console.log(components[0]);
 
     inputbox.innerHTML = result;
 }
