@@ -26,7 +26,11 @@ function validateInput(char1, char2) {
     for (char in operators) {
         operator = operators[char];
         if (operation.includes(operator) && operators.includes(char2)) {
+            if (operation.split("")[0] == "-") {
+                return true;
+            }
             return false;
+
         }
     }
     return true;
