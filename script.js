@@ -9,7 +9,6 @@ const operators = ["+", "-", "*", "/"]
 function validateInput(char1, char2) {
     const operation = inputbox.innerHTML;
     let operator;
-
     // Input can be either a number or an operator
     if (operators.includes(char1)) {
         // Cannot input two consecutive operators
@@ -19,7 +18,7 @@ function validateInput(char1, char2) {
             return true;
         }
     }
-    if (char1 == undefined && operators.includes(char2)) {
+    if ((char1 == undefined || (char1 == "0" && operation.length < 2)) && operators.includes(char2)) {
         return false;
     }
     // To prevent consecutive operators in operation string
