@@ -7,6 +7,9 @@ const operators = ["+", "-", "*", "/"]
     // If current character is an operator and the next character chosen is also an operator then the most recent
     // operator will replace the old one in the display field.
 function validateInput(char1, char2) {
+    const operation = inputbox.innerHTML;
+    let operator;
+
     // Input can be either a number or an operator
     if (operators.includes(char1)) {
         // Cannot input two consecutive operators
@@ -18,6 +21,13 @@ function validateInput(char1, char2) {
     }
     if (char1 == undefined && operators.includes(char2)) {
         return false;
+    }
+    for (char in operators) {
+        operator = operators[char];
+        // console.log(operator);
+        if (operation.includes(operator) && operators.includes(char2)) {
+            return false;
+        }
     }
     return true;
 }
