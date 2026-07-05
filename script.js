@@ -38,9 +38,15 @@ function validateInput(char1, char2) {
 }
 // 3. Add character to display field
 function addCharacter(char) {
-    if (validateInput(inputbox.innerHTML.split("").at(-1), char) === true) {
-        inputbox.textContent += char;
-    } 
+    let lastChar = inputbox.innerHTML.split("").at(-1);
+    if (validateInput(lastChar, char) === true) {
+        // Replace 0 if it is the first and only character
+        if (inputbox.innerHTML.length == 1 && lastChar == "0") {
+            inputbox.textContent = char;
+        } else {
+            inputbox.textContent += char;
+        }
+    }
 } 
 // 4. Addition
 function add(x, y) {
