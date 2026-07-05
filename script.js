@@ -22,9 +22,9 @@ function validateInput(char1, char2) {
     if (char1 == undefined && operators.includes(char2)) {
         return false;
     }
+    // To prevent consecutive operators in operation string
     for (char in operators) {
         operator = operators[char];
-        // console.log(operator);
         if (operation.includes(operator) && operators.includes(char2)) {
             return false;
         }
