@@ -30,7 +30,6 @@ function validateInput(char1, char2) {
                 return true;
             }
             return false;
-
         }
     }
     return true;
@@ -69,7 +68,7 @@ function displayResult() {
         return;
     }
 
-    const operation = inputbox.innerHTML;
+    let operation = inputbox.innerHTML;
 
     let result;
     let operator;
@@ -80,14 +79,22 @@ function displayResult() {
     for (char in operators) {
         operator = operators[char];
         if (operation.includes(operator)) {
-            components = operation.split(operator);
+            if (operation.split("")[0] == "-") {
+                operation = operation.slice(1);
+                components = operation.split(operator);
+                num1 = -(Number(components[0]));
+                num2 = Number(components[1]);
+            } else {
+                components = operation.split(operator);
+                num1 = Number(components[0]);
+                num2 = Number(components[1]);
+            }
             // Immediately exit loop after getting components
             break;
         }
     }
 
-    num1 = Number(components[0]);
-    num2 = Number(components[1]);
+    console.log(num1);
 
     // Trade off O(n) search operation (.includes()) for O(1) comparison operation (==)
     if ("+" == operator) {
