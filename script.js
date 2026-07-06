@@ -46,7 +46,7 @@ function validateInput(char1, char2) {
             return false;
         }
     }
-
+    
     return true;
 }
 
@@ -115,8 +115,6 @@ function displayResult() {
             break;
         }
     }
-
-    console.log(num1);
 
     // Trade off O(n) search operation (.includes()) for O(1) comparison operation (==)
     if ("+" == operator) {
