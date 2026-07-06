@@ -49,11 +49,31 @@ header {
     "box-4 box-5 box-6 box-12"
     "box-7 box-8 box-9 box-13"
     "box-10 box-15 box-15 box-14";
+
+    @media (max-width: 400px) {
+        height: 300px;
+        justify-content: center;
+        align-content: center;
+        margin-top: 1rem;
+        padding: 0;
+        grid-template-areas: 
+        "box-1 box-2 box-3 box-11"
+        "box-4 box-5 box-6 box-12"
+        "box-7 box-8 box-9 box-13"
+        "box-10 box-10 box-15 box-14";
+        
+    }
 }
 
 button {
     border-radius: 20px;
     margin: 1px;
+
+    @media (max-width: 400px) {
+        height: 70px;
+        width: 70px;  
+        font-size: larger;  
+    }
 }
 
 button:hover {
