@@ -30,6 +30,9 @@ function validateInput(char1, char2) {
     }
 
     if (operation.includes(NaN)) {
+        if (isOperator(char2)) {
+            return true;
+        }
         return false;
     }
 
