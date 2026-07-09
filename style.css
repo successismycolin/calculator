@@ -33,8 +33,7 @@ header {
     
 }
 
-#textbox {
-    resize: none;
+#inputbox {
     padding: 1rem;
     border-radius: 10px;
     width: 12rem;
