@@ -1,5 +1,5 @@
 // 1. Select elements
-const inputbox = document.getElementById("textbox");
+const inputbox = document.getElementById("inputbox");
 
 const operators = ["+", "-", "*", "/"];
 
@@ -26,13 +26,13 @@ function validateInput(char1, char2) {
     }
 
     if ((char1 == undefined || (char1 == "0" && operation.length < 2)) && isOperator(char2)) {
+        if (char2 == "-") {
+            return true;
+        }
         return false;
     }
 
     if (operation.includes(NaN)) {
-        if (isOperator(char2)) {
-            return true;
-        }
         return false;
     }
 
@@ -51,7 +51,7 @@ function validateInput(char1, char2) {
 }
 
 // 3. Add character to display field
-function addCharacter(char) {
+function addCharacter(char) { 
     let lastChar = inputbox.innerHTML.split("").at(-1);
 
     if (validateInput(lastChar, char) === true) {
@@ -100,7 +100,8 @@ function displayResult() {
 
     for (char in operators) {
         operator = operators[char];
-        if (operation.includes(operator)) {
+        if (operation.slice(1).includes(operator)) {
+            // Operation contains leading minus sign - handling negative number calculations
             if (operation.split("")[0] == "-") {
                 operation = operation.slice(1);
                 components = operation.split(operator);
@@ -118,7 +119,7 @@ function displayResult() {
 
     // Trade off O(n) search operation (.includes()) for O(1) comparison operation (==)
     if ("+" == operator) {
-        result = add(num1, num2); 
+        result = add(num1, num2);
     } else if ("-" == operator) {
         result = subtract(num1, num2);
     } else if ("*" == operator) {
