@@ -3,6 +3,8 @@ const inputbox = document.getElementById("inputbox");
 
 const operators = ["+", "-", "*", "/"];
 
+const invalidValues = ["NaN", "undefined"]
+
 function isOperator(char) {
     return operators.includes(char);
 }
@@ -84,7 +86,21 @@ function multiply(x, y) {
     return x * y;
 }
 
-// 8. Operation execution
+// 8. Clear textbox
+function clearDisplay() {
+    inputbox.textContent = "";
+}
+
+// 9. Clear entry
+function clearEntry() {
+    // Prevent clearing of individual characters of invalid values
+    if (invalidValues.includes(inputbox.textContent)) {
+        return;
+    }
+    inputbox.textContent = inputbox.textContent.slice(0, (inputbox.textContent).length - 1);
+}
+
+// 10. Operation execution
 function displayResult() {
     if (inputbox.innerHTML == "") {
         return;
