@@ -38,6 +38,10 @@ function validateInput(char1, char2) {
         return false;
     }
 
+    if ((isOperator(char1) || operation == "") && char2 == ".") {
+        return false;
+    }
+
     // To prevent consecutive operators in operation string
     for (char in operators) {
         operator = operators[char];
@@ -100,7 +104,14 @@ function clearEntry() {
     inputbox.textContent = inputbox.textContent.slice(0, (inputbox.textContent).length - 1);
 }
 
-// 10. Operation execution
+// 10. Add decimal
+function addDecimal() {
+    if (validateInput(inputbox.textContent.split("").at(-1), ".")) {
+        inputbox.textContent += ".";
+    }
+}
+
+// 11. Operation execution
 function displayResult() {
     if (inputbox.innerHTML == "") {
         return;
