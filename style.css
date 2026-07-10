@@ -33,7 +33,7 @@ header {
     
 }
 
-#textbox {
+#inputbox {
     resize: none;
     padding: 1rem;
     border-radius: 10px;
@@ -46,6 +46,7 @@ header {
     padding: 1rem;
     display: grid;
     grid-template-areas: 
+    "box-16 box-16 box-16 box-16"
     "box-1 box-2 box-3 box-11"
     "box-4 box-5 box-6 box-12"
     "box-7 box-8 box-9 box-13"
@@ -91,4 +92,8 @@ button:hover {
 
 .equals {
     background-color: rgb(248, 184, 100);
+}
+
+.action {
+    background-color: rgb(234, 195, 145);
 }
