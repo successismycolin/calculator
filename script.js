@@ -84,7 +84,12 @@ function multiply(x, y) {
     return x * y;
 }
 
-// 8. Operation execution
+// 8. Clear textbox
+function clearDisplay() {
+    inputbox.textContent = "";
+}
+
+// 9. Operation execution
 function displayResult() {
     if (inputbox.innerHTML == "") {
         return;
