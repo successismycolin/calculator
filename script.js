@@ -14,6 +14,9 @@ function isOperator(char) {
     // operator will replace the old one in the display field.
 function validateInput(char1, char2) {
     const operation = inputbox.innerHTML;
+    let num1;
+    let num2;
+    let nums;
 
     let operator;
 
@@ -43,13 +46,26 @@ function validateInput(char1, char2) {
     }
 
     // To prevent consecutive operators in operation string
-    for (char in operators) {
-        operator = operators[char];
+    for (const operator of operators) {
         if (operation.includes(operator) && isOperator(char2)) {
             if (operation.split("")[0] == "-") {
                 return true;
             }
             return false;
+        }
+    }
+
+    for (const operator of operators) {
+        if (char2 == ".") {
+            if (operation.includes(operator)) {
+                if (operation.split(operator)[1].includes(".")) {
+                    return false;
+                }
+                return true;
+            } else if (!(operation.includes(operator)) && (operation.includes("."))) {
+                return false;
+            }
+            return true;
         }
     }
     
