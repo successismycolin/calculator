@@ -9,11 +9,23 @@ function isOperator(char) {
     return operators.includes(char);
 }
 
+function currentOperator(operation) {
+    let operator;
+    for (const num in operators) {
+        operator = operators[num];
+        if (operation.split("").includes(operator)) {
+            return operator;
+        } else {
+            continue;
+        }
+    }
+};
+
 // 2. Input validation
     // If current character is an operator and the next character chosen is also an operator then the most recent
     // operator will replace the old one in the display field.
 function validateInput(char1, char2) {
-    const operation = inputbox.innerHTML;
+    let operation = inputbox.innerHTML;
     let num1;
     let num2;
     let nums;
@@ -46,7 +58,8 @@ function validateInput(char1, char2) {
     }
 
     // To prevent consecutive operators in operation string
-    for (const operator of operators) {
+    for (const num of operators) {
+        operator = operators[num];
         if (operation.includes(operator) && isOperator(char2)) {
             if (operation.split("")[0] == "-") {
                 return true;
@@ -54,21 +67,6 @@ function validateInput(char1, char2) {
             return false;
         }
     }
-
-    for (const operator of operators) {
-        if (char2 == ".") {
-            if (operation.includes(operator)) {
-                if (operation.split(operator)[1].includes(".")) {
-                    return false;
-                }
-                return true;
-            } else if (!(operation.includes(operator)) && (operation.includes("."))) {
-                return false;
-            }
-            return true;
-        }
-    }
-    
     return true;
 }
 
@@ -120,14 +118,36 @@ function clearEntry() {
     inputbox.textContent = inputbox.textContent.slice(0, (inputbox.textContent).length - 1);
 }
 
-// 10. Add decimal
+// 10. Validate decimal
+function validateDecimal() {
+    let operation = inputbox.innerHTML;
+    let activeOperator;
+
+    activeOperator = currentOperator(operation);
+
+    if (operation.includes(activeOperator)) {
+        if (operation.split(activeOperator)[1].includes(".")) {
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        if (operation.includes(".")) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+
+// 11. Add decimal
 function addDecimal() {
-    if (validateInput(inputbox.textContent.split("").at(-1), ".")) {
+    if (validateDecimal()) {
         inputbox.textContent += ".";
     }
 }
 
-// 11. Operation execution
+// 12. Operation execution
 function displayResult() {
     if (inputbox.innerHTML == "") {
         return;
