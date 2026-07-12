@@ -69,9 +69,9 @@ function validateInput(char1, char2) {
     }
 
     // To prevent an operator after a decimal
-    if (char1 == "." && isOperator(char2)) {
+    if ((char1 == "." && isOperator(char2))) {
         return false;
-    } 
+    }
     return true;
 }
 
@@ -129,6 +129,10 @@ function validateDecimal() {
     let activeOperator;
 
     activeOperator = currentOperator(operation);
+
+    if (isOperator(operation.split("").at(-1))) {
+        return false;
+    }
 
     if (operation.includes(activeOperator)) {
         if (operation.split(activeOperator)[1].includes(".")) {
