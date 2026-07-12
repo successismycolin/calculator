@@ -67,6 +67,11 @@ function validateInput(char1, char2) {
             return false;
         }
     }
+
+    // To prevent an operator after a decimal
+    if (char1 == "." && isOperator(char2)) {
+        return false;
+    } 
     return true;
 }
 
